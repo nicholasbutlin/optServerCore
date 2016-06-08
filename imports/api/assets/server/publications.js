@@ -4,6 +4,10 @@ import { Roles } from 'meteor/alanning:roles';
 
 // TODO: Publish only to allowed
 Meteor.publish('assets', function docPublish() {
-  return Roles.userIsInRole(this.userId, ['admin', 'default']) ? Assets.find({}) :
+  const data = Roles.userIsInRole(this.userId, ['admin']) ? Assets.find({}) :
     Assets.find({ userId: this.userId });
+  if (data) {
+    return data;
+  }
+  return this.ready();
 });

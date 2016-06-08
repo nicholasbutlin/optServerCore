@@ -14,6 +14,7 @@ import { VerifyEmail } from '../../ui/pages/accounts/verify-email';
 
 import { Documents } from '../../ui/pages/documents';
 import { Assets } from '../../ui/pages/assets';
+import { AccountDetails } from '../../ui/pages/accountDetails';
 
 import { NotFound } from '../../ui/pages/not-found';
 import { Index } from '../../ui/pages/index';
@@ -35,6 +36,7 @@ Meteor.startup(() => {
         <IndexRoute name="index" component={ Index } onEnter={ requireAuth } />
         <Route name="documents" path="/documents" component={ Documents } onEnter={ requireAuth } />
         <Route name="assets" path="/assets" component={ Assets } onEnter={ requireAuth } />
+        <Route name="account" path="/account" component={ AccountDetails } onEnter={ requireAuth } />
         <Route name="login" path="/login" component={ Login } />
         <Route name="recover-password" path="/recover-password" component={ RecoverPassword } />
         <Route name="reset-password" path="/reset-password/:token" component={ ResetPassword } />

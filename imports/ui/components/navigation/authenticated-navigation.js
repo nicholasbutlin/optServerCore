@@ -27,6 +27,10 @@ export const AuthenticatedNavigation = () => (
     </Nav>
     <Nav pullRight>
       <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">
+        <LinkContainer to="/account">
+          <MenuItem eventKey={ 3.2 } href="/account">Account</MenuItem>
+        </LinkContainer>
+        <MenuItem divider />
         <MenuItem eventKey={ 3.1 } onClick={ handleLogout }>Logout</MenuItem>
       </NavDropdown>
     </Nav>

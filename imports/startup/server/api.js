@@ -3,8 +3,12 @@ import '../../api/documents/server/publications.js';
 
 import '../../api/accounts/methods.js';
 
+import '../../api/apiKeys/methods.js';
+import '../../api/apiKeys/server/publications.js';
+
 import '../../api/assets/methods.js';
 import '../../api/assets/server/publications.js';
+
 import '../../api/assetMetrics/methods.js';
 import '../../api/assetMetrics/server/publications.js';
 

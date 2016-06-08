@@ -30,28 +30,38 @@ AssetMetrics.schema = new SimpleSchema({
     label: '',
   },
   metrics: {
-    type: [Array],
+    type: [Object],
     label: 'state of charge, voltage, current, temperature, power etc...',
-    minimum: 0,
-    required: [],
-    properties: {
-      stateOfCharge: {
-        type: Number,
-        denyUpdate: true,
-      },
-      voltage: {
-        type: Number,
-        denyUpdate: true,
-      },
-      current: {
-        type: Number,
-        denyUpdate: true,
-      },
-      temperature: {
-        type: Number,
-        denyUpdate: true,
-      },
-    },
+  },
+  'metrics.$.stateOfCharge': {
+    type: Number,
+    denyUpdate: true,
+    optional: true,
+  },
+  'metrics.$.voltage': {
+    type: Number,
+    denyUpdate: true,
+    optional: true,
+  },
+  'metrics.$.current': {
+    type: Number,
+    denyUpdate: true,
+    optional: true,
+  },
+  'metrics.$.temperature': {
+    type: Number,
+    denyUpdate: true,
+    optional: true,
+  },
+  'metrics.$.power': {
+    type: Number,
+    denyUpdate: true,
+    optional: true,
+  },
+  'metrics.$.energy': {
+    type: Number,
+    denyUpdate: true,
+    optional: true,
   },
 });
 

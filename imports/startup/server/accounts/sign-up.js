@@ -1,4 +1,5 @@
 import { Accounts } from 'meteor/accounts-base';
+// import { initApiKey } from '../../../api/apiKeys/methods';
 
 Accounts.onCreateUser(function (options, user) {
   const u = user;

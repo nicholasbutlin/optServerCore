@@ -6,6 +6,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import { getInputValue } from './../get-input-value';
 
 import { accountVerify } from '../../../api/accounts/methods';
+import { initApiKey } from '../../../api/apiKeys/methods';
 
 let component;
 
@@ -31,6 +32,7 @@ const signUp = () => {
     }
   });
   accountVerify.call();
+  initApiKey.call();
 };
 
 const validate = () => {

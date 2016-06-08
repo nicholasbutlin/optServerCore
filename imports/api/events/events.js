@@ -33,6 +33,10 @@ Events.schema = new SimpleSchema({
     type: String,
     label: 'what type of event this is',
   },
+  eventActual: {
+    type: Boolean,
+    label: 'is this a forecast or actual historical, actual is true',
+  },
   eventCreated: {
     type: '',
     label: 'when was this event created',
@@ -41,36 +45,33 @@ Events.schema = new SimpleSchema({
   eventStart: {
     type: String,
     label: 'when is the start of this event',
+    optional: true,
   },
   eventEnd: {
     type: String,
     label: 'when is the start of this event',
-  },
-  eventActual: {
-    type: Boolean,
-    label: 'is this a forecast or actual historical, actual is true',
+    optional: true,
   },
   eventInstruction: {
-    type: [Array],
-    minimum: 0,
+    type: [Object],
+    minCount: 0,
+    label: 'the details of the instruction if not at block level',
     optional: true,
-    properties: {
-      assetId: {
-        type: String,
-        denyUpdate: true,
-        description: 'the unique, agreed name of the asset',
-      },
-      chargeRate: {
-        type: Number,
-        optional: true,
-        description: 'the rate set for charging, watts, negative is discharge',
-      },
-      calculatedAt: {
-        type: String,
-        description: 'datetime the instruction was calculated',
-        denyUpdate: true,
-      },
-    },
+  },
+  'eventInstruction.$.assetId': {
+    type: String,
+    denyUpdate: true,
+    label: 'the unique, agreed id of the asset',
+  },
+  'eventInstruction.$.chargeRate': {
+    type: Number,
+    optional: true,
+    label: 'the rate set for charging, watts, negative is discharge',
+  },
+  'eventInstruction.$.calculatedAt': {
+    type: String,
+    label: 'datetime the instruction was calculated',
+    denyUpdate: true,
   },
 });
 

@@ -39,47 +39,42 @@ Assets.schema = new SimpleSchema({
     label: 'the site this asset is linked to',
     optional: true,
   },
+  userId: {
+    type: String,
+    label: 'the site this asset is linked to',
+    optional: true,
+  },
   assetStatus: {
-    type: [Array],
+    type: [Object],
     label: 'the status of this asset, forecast and historical',
     optional: true,
-    minimum: 0,
-    items: {
-      type: Object,
-      required: ['available', 'updatedAt'],
-      properties: {
-        available: {
-          type: Boolean,
-          description: 'asset is available for use',
-          default: false,
-        },
-        activityId: {
-          type: String,
-          description: 'any activity linked to this status',
-          denyUpdate: true,
-        },
-        updatedAt: {
-          type: String,
-          description: 'date availability changed',
-          denyUpdate: true,
-        },
-        periodStart: {
-          type: String,
-          description: 'date availability period started',
-          denyUpdate: true,
-        },
-        periodEnd: {
-          type: String,
-          description: 'date availability period ends or ended',
-          denyUpdate: true,
-        },
-        userId: {
-          type: String,
-          description: 'User who made the change',
-          denyUpdate: true,
-        },
-      },
-    },
+    minCount: 0,
+  },
+  'assetStatus.$.available': {
+    type: Boolean,
+    label: 'true if asset is available for use',
+  },
+  'assetStatus.$.activityId': {
+    type: String,
+    label: 'any activity linked to this status',
+    optional: true,
+  },
+  'assetStatus.$.updatedAt': {
+    type: String,
+    label: 'date availability changed',
+  },
+  'assetStatus.$.periodStart': {
+    type: String,
+    label: 'date availability period started',
+  },
+  'assetStatus.$.periodEnd': {
+    type: String,
+    label: 'date availability period ends or ended',
+  },
+  'assetStatus.$.userId': {
+    type: String,
+    label: 'User who made the change',
+    denyUpdate: true,
   },
 });
 

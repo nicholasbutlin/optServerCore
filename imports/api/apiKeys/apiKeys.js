@@ -1,6 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 
-export const APIKeys = new Mongo.Collection('api-keys');
+export const APIKeys = new Mongo.Collection('apiKeys');
 
 APIKeys.allow({
   insert: () => false,

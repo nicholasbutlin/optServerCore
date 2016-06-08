@@ -37,14 +37,11 @@ EventBlocks.schema = new SimpleSchema({
   },
   assets: {
     type: Array,
-    minimum: 0,
-    properties: {
-      assetId: {
-        type: String,
-        denyUpdate: true,
-        description: 'the assets in this event block',
-      },
-    },
+    abel: 'the assets in this event block',
+    minCount: 0,
+  },
+  'assets.$.assetId': {
+    type: String,
   },
 });
 

@@ -11,6 +11,7 @@ export const insertAsset = new ValidatedMethod({
     location: { type: String },
   }).validator(),
   run(document) {
+    document.userId = Meteor.userId();
     Assets.insert(document);
   },
 });
