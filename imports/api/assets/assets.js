@@ -23,11 +23,12 @@ Assets.deny({
 Assets.schema = new SimpleSchema({
   assetName: {
     type: String,
+    denyUpdate: true,
     label: 'the unique human readable id of the Asset',
   },
   assetType: {
     type: String,
-    label: 'a description of the type of asset',
+    label: 'a description of the type of asset e.g. Meter, Battery etc..',
   },
   location: {
     type: String,
@@ -39,9 +40,46 @@ Assets.schema = new SimpleSchema({
     optional: true,
   },
   assetStatus: {
-    type: [Object],
+    type: [Array],
     label: 'the status of this asset, forecast and historical',
     optional: true,
+    minimum: 0,
+    items: {
+      type: Object,
+      required: ['available', 'updatedAt'],
+      properties: {
+        available: {
+          type: Boolean,
+          description: 'asset is available for use',
+          default: false,
+        },
+        activityId: {
+          type: String,
+          description: 'any activity linked to this status',
+          denyUpdate: true,
+        },
+        updatedAt: {
+          type: String,
+          description: 'date availability changed',
+          denyUpdate: true,
+        },
+        periodStart: {
+          type: String,
+          description: 'date availability period started',
+          denyUpdate: true,
+        },
+        periodEnd: {
+          type: String,
+          description: 'date availability period ends or ended',
+          denyUpdate: true,
+        },
+        userId: {
+          type: String,
+          description: 'User who made the change',
+          denyUpdate: true,
+        },
+      },
+    },
   },
 });
 

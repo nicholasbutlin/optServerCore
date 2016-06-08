@@ -5,14 +5,18 @@ import '../../api/accounts/methods.js';
 
 import '../../api/assets/methods.js';
 import '../../api/assets/server/publications.js';
-// import '../../api/assetMetrics/methods.js';
-// import '../../api/assetMetrics/server/publications.js';
-// import '../../api/activities/methods.js';
-// import '../../api/activities/server/publications.js';
-// import '../../api/assetStatuses/methods.js';
-// import '../../api/assetStatuses/server/publications.js';
+import '../../api/assetMetrics/methods.js';
+import '../../api/assetMetrics/server/publications.js';
+
 // import '../../api/events/methods.js';
 // import '../../api/events/server/publications.js';
+
+// import '../../api/eventBlocks/methods.js';
+// import '../../api/eventBlocks/server/publications.js';
+
+// import '../../api/activities/methods.js';
+// import '../../api/activities/server/publications.js';
+
 // import '../../api/orgClients/methods.js';
 // import '../../api/orgClients/server/publications.js';
 // import '../../api/orgContacts/methods.js';
