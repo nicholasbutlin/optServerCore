@@ -37,3 +37,4 @@ tunifight:loggedin-mixin
 email
 simple:rest
 msavin:mongol
+simple:rest-json-error-handler
