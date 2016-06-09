@@ -25,7 +25,7 @@ export const initApiKey = new ValidatedMethod({
   },
 });
 
-// TODO: API Key management on remotes?
+
 // TODO: Regenerate API Key?
 // export const regenerateApiKey = new ValidatedMethod({
 //   name: 'regenApi',

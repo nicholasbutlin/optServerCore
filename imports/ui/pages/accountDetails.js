@@ -1,4 +1,3 @@
-// TODO: Add user details
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ApiKey from '../containers/apiKey.js';
@@ -11,3 +10,6 @@ export const AccountDetails = () => (
     </Col>
   </Row>
 );
+
+// TODO: Add user details
+// TODO: Admin page to manage users?

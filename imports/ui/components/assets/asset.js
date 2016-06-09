@@ -10,7 +10,7 @@ const handleViewDetails = (assetId, event) => {
 
 const handleRemoveAsset = (assetId, event) => {
   event.preventDefault();
-  // TODO: this should be replaced with a styled solution so for now we will
+  // TODO: this should be replaced with a styled solution
   // disable the eslint `no-alert`
   // eslint-disable-next-line no-alert
   if (confirm('Are you sure? This is permanent.')) {

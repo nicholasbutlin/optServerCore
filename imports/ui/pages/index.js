@@ -8,8 +8,8 @@ export class Index extends React.Component {
       <EmailVerifier />
       <Jumbotron className="text-center">
         <h2>AppV</h2>
-        <p>A starting point for Meteor applications.</p>
-        <p style={ { fontSize: '16px', color: '#aaa' } }>Hello</p>
+        <p>Welcome to AppV.</p>
+        <p style={ { fontSize: '16px', color: '#aaa' } }>start by...</p>
     </Jumbotron>;
   </div>;
   }

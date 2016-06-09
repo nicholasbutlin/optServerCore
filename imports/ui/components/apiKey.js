@@ -15,7 +15,7 @@ export const ApiKey = ({ apiKey }) => (
         <FormGroup>
           <InputGroup>
             <FormControl
-              disabled
+              readOnly
               id="apiKey"
               type="text"
               defaultValue={ apiKey.key }

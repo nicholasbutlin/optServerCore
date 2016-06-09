@@ -1,4 +1,4 @@
-// TODO: Server Side Routes
+// TODO: Server Side Routes or simple rest?
 // Router.route( '/api/v1/metrics/:id?', function() {
 //
 // 	this.response.setHeader( 'Access-Control-Allow-Origin', '*' );
