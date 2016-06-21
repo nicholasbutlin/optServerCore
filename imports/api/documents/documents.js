@@ -29,11 +29,6 @@ Documents.schema = new SimpleSchema({
   userId: {
     type: String,
     label: 'The user who owns this doc.',
-    autoValue: function () {
-      if (!this.userId) {
-        return Meteor.userId();
-      }
-    },
   },
 });
 

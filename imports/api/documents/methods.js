@@ -8,6 +8,9 @@ export const insertDocument = new ValidatedMethod({
     title: { type: String },
   }).validator(),
   run(document) {
+    if (!document.userId) {
+      document.userId = Meteor.userId();
+    }
     Documents.insert(document);
   },
 });

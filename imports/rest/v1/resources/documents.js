@@ -31,7 +31,7 @@ JsonRoutes.add('post', '/v1/documents/', function (req, res, next) {
   const userId = req.userId;
   if (userId) {
     req.body.userId = userId;
-    restInsertDocument.call(req.body);
+    res.body = restInsertDocument.call(req.body);
   }
   JsonRoutes.sendResult(res, {
   });
