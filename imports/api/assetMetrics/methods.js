@@ -1,3 +1,12 @@
 import { AssetMetrics } from './assetMetrics';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
+
+
+export const insertAssetMetric = new ValidatedMethod({
+  name: 'assetMetric.insert',
+  validate: AssetMetrics.schema.validator(),
+  run(doc) {
+    console.log('OK Method');
+    AssetMetrics.insert(doc);
+  },
+});

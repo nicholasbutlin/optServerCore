@@ -20,6 +20,17 @@ JsonRoutes.add('get', '/v1/documents/', function (req, res, next) {
   });
 });
 
+/**
+ * @api {get} /v1/documents/:id Request document information
+ * @apiName GetDocument
+ *
+ * @apiParam {String} id document's unique ID.
+ *
+ * @apiSuccess {String} _id id of the Doc.
+ * @apiSuccess {String} title  of the doc.
+ * @apiSuccess {String} userId  id User.
+ */
+
 JsonRoutes.add('get', '/v1/documents/:id', function (req, res, next) {
   const id = req.params.id;
   JsonRoutes.sendResult(res, {

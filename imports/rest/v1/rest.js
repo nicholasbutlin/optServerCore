@@ -1,5 +1,5 @@
 import './config/rest-config';
-import './config/router';
+import './config/router-config';
 // resources
 import './resources/documents';
-import './resources/assetMetrics';
+import './resources/asset-metrics';

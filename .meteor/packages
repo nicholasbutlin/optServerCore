@@ -38,6 +38,4 @@ email
 msavin:mongol
 simple:rest-json-error-handler
 simple:json-routes
-simple:rest-accounts-password
-simple:rest-bearer-token-parser
-simple:authenticate-user-by-token
+nimble:restivus
