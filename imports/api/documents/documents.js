@@ -30,10 +30,9 @@ Documents.schema = new SimpleSchema({
     type: String,
     label: 'The user who owns this doc.',
     autoValue: function () {
-      if (this.isInsert) {
+      if (!this.userId) {
         return Meteor.userId();
       }
-      this.unset();
     },
   },
 });

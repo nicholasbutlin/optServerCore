@@ -35,6 +35,9 @@ dburles:factory
 react-meteor-data
 tunifight:loggedin-mixin
 email
-simple:rest
 msavin:mongol
 simple:rest-json-error-handler
+simple:json-routes
+simple:rest-accounts-password
+simple:rest-bearer-token-parser
+simple:authenticate-user-by-token

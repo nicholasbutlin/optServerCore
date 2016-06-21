@@ -44,6 +44,31 @@ Assets.schema = new SimpleSchema({
     label: 'the site this asset is linked to',
     optional: true,
   },
+  assetIntegrations: {
+    type: [Object],
+    label: 'the integration modules for this asset',
+    optional: true,
+  },
+  'assetIntegrations.$.name': {
+    type: String,
+    label: 'the integration module name',
+    optional: true,
+  },
+  'assetIntegrations.$.type': {
+    type: String,
+    label: 'the integration module type, e.g. metering, control etc...',
+    optional: true,
+  },
+  'assetIntegrations.$.commisioned': {
+    type: Date,
+    label: 'the date this integration was commisioned',
+    optional: true,
+  },
+  'assetIntegrations.$.altId': {
+    type: String,
+    label: 'the alternative id of this asset for this integration',
+    optional: true,
+  },
   assetStatus: {
     type: [Object],
     label: 'the status of this asset, forecast and historical',
