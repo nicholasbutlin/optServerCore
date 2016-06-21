@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, ListGroupItem, Button } from 'react-bootstrap';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { removeAsset } from '../../../api/assets/methods.js';
+import { removeAsset } from '../../../api/assets/methods';
 
 // TODO: Go to detail view
 const handleViewDetails = (assetId, event) => {
@@ -46,14 +46,18 @@ export const Asset = ({ asset }) => (
           Remove
         </Button>
       </Col>
-      <Col xs={ 12 } md={ 2 }>
+
+      {/*
+        <Col xs={ 12 } md={ 2 }>
         <Button
-          bsStyle="warning"
-          className="btn-block"
-          onClick={ handleViewDetails.bind(this, asset._id) }>
-          Edit
+        sStyle="warning"
+        className="btn-block"
+        onClick={ handleViewDetails.bind(this, asset._id) }>
+        Edit
         </Button>
-      </Col>
+        </Col>
+      */}
+
     </Row>
   </ListGroupItem>
 );

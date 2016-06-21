@@ -67,7 +67,6 @@ modules-runtime@0.6.4
 mongo@1.1.9
 mongo-id@1.0.5
 msavin:mongol@2.0.1
-nimble:restivus@0.8.11
 npm-bcrypt@0.8.6_1
 npm-mongo@1.4.44
 observe-sequence@1.0.12
@@ -90,7 +89,10 @@ routepolicy@1.0.11
 service-configuration@1.0.10
 session@1.1.6
 sha@1.0.8
+simple:authenticate-user-by-token@1.0.1
 simple:json-routes@2.1.0
+simple:rest-accounts-password@1.1.2
+simple:rest-bearer-token-parser@1.0.1
 simple:rest-json-error-handler@1.0.1
 spacebars@1.0.12
 spacebars-compiler@1.0.12

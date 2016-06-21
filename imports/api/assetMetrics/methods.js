@@ -6,7 +6,6 @@ export const insertAssetMetric = new ValidatedMethod({
   name: 'assetMetric.insert',
   validate: AssetMetrics.schema.validator(),
   run(doc) {
-    console.log('OK Method');
     AssetMetrics.insert(doc);
   },
 });

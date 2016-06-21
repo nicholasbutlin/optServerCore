@@ -1,7 +1,7 @@
 import { composeWithTracker } from 'react-komposer';
 import { Meteor } from 'meteor/meteor';
 import { EmailVerifier } from '../components/accounts/verify-email';
-import { Loading } from '../components/loading.js';
+import { Loading } from '../components/loading';
 
 const composer = (props, onData) => {
   if (Meteor.user()) {

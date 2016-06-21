@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListGroup, Alert } from 'react-bootstrap';
-import { Asset } from './asset.js';
+import { Asset } from './asset';
 
 export const AssetsList = ({ assets }) => (
   assets.length > 0 ? <ListGroup className="asset-list">

@@ -1,9 +1,9 @@
 import { composeWithTracker } from 'react-komposer';
-import { Loading } from '../components/loading.js';
+import { Loading } from '../components/loading';
 import { Meteor } from 'meteor/meteor';
 
 import { APIKeys } from '../../api/apiKeys/apiKeys';
-import { ApiKey } from '../components/apiKey.js';
+import { ApiKey } from '../components/apiKey';
 
 const composer = (params, onData) => {
   const subscription = Meteor.subscribe('APIKey');

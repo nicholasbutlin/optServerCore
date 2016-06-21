@@ -3,7 +3,7 @@ import 'jquery-validation';
 import React from 'react';
 import { Row, Col, FormGroup, FormControl, Button } from 'react-bootstrap';
 import { Bert } from 'meteor/themeteorchef:bert';
-import { insertAsset } from '../../../api/assets/methods.js';
+import { insertAsset } from '../../../api/assets/methods';
 import { getInputValue } from './../get-input-value';
 
 let component;

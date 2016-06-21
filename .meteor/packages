@@ -38,4 +38,4 @@ email
 msavin:mongol
 simple:rest-json-error-handler
 simple:json-routes
-nimble:restivus
+simple:rest-accounts-password

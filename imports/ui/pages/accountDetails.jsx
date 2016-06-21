@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import ApiKey from '../containers/apiKey.js';
+import ApiKey from '../containers/apiKey';
 
 export const AccountDetails = () => (
   <Row>

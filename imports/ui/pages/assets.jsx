@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import AssetsList from '../containers/assets-list.js';
-import { AddAsset } from '../components/assets/add-asset.js';
+import AssetsList from '../containers/assets-list';
+import { AddAsset } from '../components/assets/add-asset';
 
 export const Assets = () => (
   <Row>

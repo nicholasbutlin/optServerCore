@@ -14,10 +14,8 @@ JsonRoutes.setResponseHeaders({
 JsonRoutes.ErrorMiddleware.use(RestMiddleware.handleErrorAsJson);
 
 const getUserIdFromAuthToken = (token) => {
-  console.log(token);
   if (token) {
     const apiUser = APIKeys.findOne({ key: token });
-    console.log(apiUser);
     if (apiUser) {
       return apiUser.owner;
     }
@@ -27,10 +25,7 @@ const getUserIdFromAuthToken = (token) => {
 };
 
 JsonRoutes.Middleware.use(function (req, res, next) {
-  console.log('OK Mid');
-  console.log(req.headers.apikey);
   const userId = getUserIdFromAuthToken(req.headers.apikey);
-  console.log(userId);
   if (userId) {
     req.userId = userId;
   }
