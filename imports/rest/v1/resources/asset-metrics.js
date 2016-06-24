@@ -11,7 +11,7 @@ JsonRoutes.add('get', '/v1/asset-metrics/', function (req, res, next) {
 JsonRoutes.add('get', '/v1/asset-metrics/:assetId', function (req, res, next) {
   const assetId = req.params.assetId;
   JsonRoutes.sendResult(res, {
-    data: AssetMetrics.find({ assetId }, { limit: 1, sort: { $natural: -1 } }).fetch(),
+    data: AssetMetrics.findOne({ assetId }, { sort: { $natural: -1 }, fields: { _id: 0 } }),
   });
 });
 
