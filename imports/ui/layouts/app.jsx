@@ -11,6 +11,7 @@ export const App = React.createClass({
       <AppNavigation />
       <Grid>
         { this.props.children }
+        <footer>copyright viriya energy</footer>
       </Grid>
     </div>;
   },

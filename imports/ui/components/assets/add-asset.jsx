@@ -10,6 +10,7 @@ let component;
 
 const getAssetData = () => ({
   assetName: getInputValue(component.refs.assetName),
+  assetId: getInputValue(component.refs.assetId),
   assetType: getInputValue(component.refs.assetType),
   location: getInputValue(component.refs.location),
 });
@@ -34,6 +35,9 @@ const validate = () => {
       assetName: {
         required: true,
       },
+      assetId: {
+        required: true,
+      },
       assetType: {
         required: true,
       },
@@ -43,13 +47,16 @@ const validate = () => {
     },
     messages: {
       assetName: {
-        required: 'Identifiable name?',
+        required: 'Human Id',
+      },
+      assetId: {
+        required: 'Machine Id',
       },
       assetType: {
-        required: 'Type of Asset?',
+        required: 'Type of Asset',
       },
       location: {
-        required: 'Where is this asset located?',
+        required: 'Where is this asset',
       },
     },
     submitHandler() { createAsset(); },
@@ -86,6 +93,16 @@ export class AddAsset extends React.Component {
                 />
               </FormGroup>
             </Col>
+            <Col xs={ 4 } md={ 2 }>
+            <FormGroup>
+              <FormControl
+                type="text"
+                ref="assetId"
+                name="assetId"
+                placeholder="Asset Id"
+              />
+            </FormGroup>
+          </Col>
             <Col xs={ 4 } md={ 2 } >
               <FormGroup>
                 <FormControl

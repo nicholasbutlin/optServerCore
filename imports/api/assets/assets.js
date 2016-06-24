@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { moment } from 'meteor/momentjs:moment';
+import { Random } from 'meteor/random';
 
 export const Assets = new Mongo.Collection('assets');
 
@@ -25,6 +27,11 @@ Assets.schema = new SimpleSchema({
     type: String,
     denyUpdate: true,
     label: 'the unique human readable id of the Asset',
+  },
+  assetId: {
+    type: String,
+    denyUpdate: true,
+    label: 'the unique machine id of the Asset',
   },
   assetType: {
     type: String,
@@ -70,37 +77,43 @@ Assets.schema = new SimpleSchema({
     optional: true,
   },
   assetStatus: {
-    type: [Object],
+    type: Array,
     label: 'the status of this asset, forecast and historical',
     optional: true,
     minCount: 0,
   },
+  'assetStatus.$': {
+    type: Object,
+    label: 'the status of this asset, forecast and historical',
+    optional: true,
+  },
   'assetStatus.$.available': {
     type: Boolean,
     label: 'true if asset is available for use',
+  },
+  'assetStatus.$.current': {
+    type: Boolean,
+    label: 'true if this is the current record',
+  },
+  'assetStatus.$.periodStart': {
+    type: Date,
+    label: 'date availability period started',
+    optional: true,
+  },
+  'assetStatus.$.periodEnd': {
+    type: Date,
+    label: 'date availability period ends or ended',
+    optional: true,
+  },
+  'assetStatus.$.userId': {
+    type: String,
+    label: 'User who made the change',
   },
   'assetStatus.$.activityId': {
     type: String,
     label: 'any activity linked to this status',
     optional: true,
   },
-  'assetStatus.$.updatedAt': {
-    type: String,
-    label: 'date availability changed',
-  },
-  'assetStatus.$.periodStart': {
-    type: String,
-    label: 'date availability period started',
-  },
-  'assetStatus.$.periodEnd': {
-    type: String,
-    label: 'date availability period ends or ended',
-  },
-  'assetStatus.$.userId': {
-    type: String,
-    label: 'User who made the change',
-    denyUpdate: true,
-  },
 });
 
-Assets.attachSchema(Assets.schema);
+Assets.attachSchema(Assets.schema, { removeEmptyStrings: false });

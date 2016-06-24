@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { Row, Col, ListGroupItem, Button } from 'react-bootstrap';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { removeAsset } from '../../../api/assets/methods';
@@ -30,22 +31,27 @@ export const Asset = ({ asset }) => (
   <ListGroupItem key={ asset._id }>
     <Row>
       <Col xs={ 4 } md={ 2 }>
-        { asset.assetName }
+        <Link to="assets" params={{ id: asset._id }}>
+          { asset.assetName }
+        </Link>
       </Col>
       <Col xs={ 4 } md={ 2 }>
-        { asset.assetType }
+        { asset.assetId }
       </Col>
       <Col xs={ 4 } md={ 2 }>
         { asset.location }
       </Col>
-      <Col xs={ 12 } md={ 2 } mdOffset={2}>
+
+      {/*
+        <Col xs={ 12 } md={ 2 } mdOffset={2}>
         <Button
-          bsStyle="danger"
-          className="btn-block"
-          onClick={ handleRemoveAsset.bind(this, asset._id) }>
-          Remove
+        bsStyle="danger"
+        className="btn-block"
+        onClick={ handleRemoveAsset.bind(this, asset._id) }>
+        Remove
         </Button>
-      </Col>
+        </Col>
+      */}
 
       {/*
         <Col xs={ 12 } md={ 2 }>

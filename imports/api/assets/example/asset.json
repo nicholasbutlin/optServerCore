@@ -1,0 +1,27 @@
+{
+  "assetName": "APC_UPS_Test",
+  "assetId": "APC_UPS_Test",
+  "assetType": "UPS",
+  "location": "Nick's Office",
+  "siteId": "33Warwick",
+  "userId":"",
+  "assetIntegrations": [
+    {
+      "name":"UPSide",
+      "type":"",
+      "commissioned":"",
+      "altId":"ffffffff-ffff-4fff-8001-000000000001"
+    }
+  ],
+  "assetStatus": [
+    {
+      "available":true,
+      "current":true,
+      "activityId":"",
+      "updatedAt":"2016-06-24T01:00:00+00:00",
+      "periodStart":"2016-06-24T01:00:00+00:00",
+      "periodEnd":"",
+      "userId":""
+    }
+  ]
+}
