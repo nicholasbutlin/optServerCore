@@ -7,9 +7,13 @@ export const insertAssetMetric = new ValidatedMethod({
   name: 'assetMetric.insert',
   validate: AssetMetrics.schema.validator(),
   run(doc) {
+    let res = '';
     const asset = Assets.findOne({ assetId: doc.assetId });
     if (asset) {
-      return AssetMetrics.insert(doc);
+      res = AssetMetrics.insert(doc);
+    } else {
+      res = 'asset not found';
     }
+    return res;
   },
 });
