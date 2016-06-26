@@ -4,7 +4,7 @@ import { insertAssetMetric } from '../../../api/assetMetrics/methods';
 
 JsonRoutes.add('get', '/v1/asset-metrics/', function (req, res, next) {
   JsonRoutes.sendResult(res, {
-    data: 'no data',
+    data: 'not accessible',
   });
 });
 

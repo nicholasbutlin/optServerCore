@@ -43,11 +43,14 @@ export const removeAsset = new ValidatedMethod({
 });
 
 // API Methods
+
+// Update the Status of an Asset
 export const insertAssetStatus = new ValidatedMethod({
   name: 'assets.api.update-status',
   validate: new SimpleSchema({
     assetId: { type: String },
     'assetStatus.available': { type: Boolean },
+    'assetStatus.state': { type: String },
     'assetStatus.userId': { type: String },
   }).validator(),
   run(doc) {
@@ -56,9 +59,10 @@ export const insertAssetStatus = new ValidatedMethod({
     const asset = Assets.findOne({ assetId: doc.assetId },
             { fields: { assetStatus: { $elemMatch: { current: true } } } });
 
-    const status = asset.assetStatus[0].available;
+    const available = asset.assetStatus[0].available;
+    const state = asset.assetStatus[0].state;
 
-    if (doc.assetStatus.available !== status) {
+    if (doc.assetStatus.available !== available || doc.assetStatus.state !== state) {
       // if they are not the same
       const datetime = moment().format();
       // set current to false, put in end date
@@ -76,11 +80,11 @@ export const insertAssetStatus = new ValidatedMethod({
       Assets.update({ assetId: doc.assetId }, {
         $push: {
           assetStatus: {
-            available: doc.assetStatus.available,
             current: true,
+            available: doc.assetStatus.available,
+            state: doc.assetStatus.state,
             periodStart: datetime,
             userId: doc.assetStatus.userId,
-            reason: doc.assetStatus.reason,
           },
         },
       });
@@ -88,6 +92,28 @@ export const insertAssetStatus = new ValidatedMethod({
     } else {
       result = { status: 'no update' };
     }
+    return result;
+  },
+});
+
+
+// Create an asset Event
+export const updateAssetRequestedPower = new ValidatedMethod({
+  name: 'assets.api.insert-event',
+  validate: new SimpleSchema({
+    assetId: { type: String },
+    assetRequestedPower: { type: Number },
+  }).validator(),
+  run(doc) {
+    let result = {};
+    Assets.update({
+      assetId: doc.assetId,
+    }, {
+      $set: {
+        assetRequestedPower: doc.assetRequestedPower,
+      },
+    });
+    result = doc.assetRequestedPower;
     return result;
   },
 });

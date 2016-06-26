@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-export const Documents = new Mongo.Collection('Documents');
+export const Documents = new Mongo.Collection('documents');
 
 // TODO: Implement search as per: https://themeteorchef.com/snippets/simple-search/
 if (Meteor.isServer) {

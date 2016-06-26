@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-export const AssetMetrics = new Mongo.Collection('AssetMetrics');
+export const AssetMetrics = new Mongo.Collection('assetmetrics');
 
 if (Meteor.isServer) {
   AssetMetrics._ensureIndex({ assetId: 1 });

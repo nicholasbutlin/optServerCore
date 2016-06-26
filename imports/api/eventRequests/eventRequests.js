@@ -1,66 +1,64 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
-import { moment } from 'meteor/momentjs:moment';
-import { Random } from 'meteor/random';
 
-export const Events = new Mongo.Collection('Events');
+export const EventRequests = new Mongo.Collection('eventrequests');
 
 if (Meteor.isServer) {
-  Events._ensureIndex({ eventId: 1 });
+  EventRequests._ensureIndex({ 'eventInstructions.assetId': 1 });
 }
 
-Events.allow({
+EventRequests.allow({
   insert: () => false,
   update: () => false,
   remove: () => false,
 });
 
-Events.deny({
+EventRequests.deny({
   insert: () => true,
   update: () => true,
   remove: () => true,
 });
 
-Events.schema = new SimpleSchema({
+// TODO: Scheduled events vs. instantaneous events
+// TODO: How does an event trequest trigger an event?
+
+EventRequests.schema = new SimpleSchema({
+  eventRequestCreated: {
+    type: Date,
+    label: 'when was this event created',
+    optional: true,
+  },
   eventType: {
     type: String,
     label: 'what type of event this is',
-  },
-  eventCreated: {
-    type: Date,
-    label: 'when was this event created',
-    autovalue: () => moment().format(),
-    denyUpdate: true,
   },
   eventStart: {
     type: String,
     label: 'when is the start of this event',
   },
   eventEnd: {
-    type: String,
+    type: Date,
     label: 'when is the end of this event, if known',
     optional: true,
   },
-  eventInstruction: {
+  eventInstructions: {
     type: [Object],
     minCount: 0,
-    label: 'the details of the instruction if not at block level',
-    optional: true,
+    label: 'the details of the instructions if not at block level',
   },
-  'eventInstruction.$.assetId': {
+  'eventInstructions.$.assetId': {
     type: String,
-    denyUpdate: true,
     label: 'the unique, agreed id of the asset',
   },
-  'eventInstruction.$.chargeRate': {
+  'eventInstructions.$.chargeRate': {
     type: Number,
-    optional: true,
     label: 'the rate set for charging, watts, negative is discharge',
   },
-  'eventInstruction.$.calculatedAt': {
+  'eventInstructions.$.calculatedAt': {
     type: String,
     label: 'datetime the instruction was calculated',
+    optional: true,
   },
   blockId: {
     type: String,
@@ -69,4 +67,4 @@ Events.schema = new SimpleSchema({
   },
 });
 
-Events.attachSchema(Events.schema, { removeEmptyStrings: false });
+EventRequests.attachSchema(EventRequests.schema, { removeEmptyStrings: false });

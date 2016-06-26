@@ -13,9 +13,11 @@ JsonRoutes.add('get', '/v1/asset-status/:assetId', function (req, res, next) {
   const assetId = req.params.assetId;
   const asset = Assets.findOne({ assetId },
     { fields: { assetStatus: { $elemMatch: { current: true } } } });
-  const status = asset.assetStatus[0].available;
+  const available = asset.assetStatus[0].available;
+  const state = asset.assetStatus[0].state;
+  const requestedPower = asset.assetRequestedPower;
   JsonRoutes.sendResult(res, {
-    data: { asset: assetId, available: status },
+    data: { asset: assetId, available, state, requestedPower },
   });
 });
 

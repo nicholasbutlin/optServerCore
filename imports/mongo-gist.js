@@ -29,7 +29,6 @@ db.assets.update({ assetId: 'APC_UPS_Test' }, {
 
 db.assets.update({
   assetId: 'APC_UPS_Test',
-  'assetStatus.id': 'abdg1tbhweioj',
 }, {
   $set: {
     'assetStatus.$.current': true,

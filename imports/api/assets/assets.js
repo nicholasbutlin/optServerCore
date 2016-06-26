@@ -35,6 +35,18 @@ Assets.schema = new SimpleSchema({
     type: String,
     label: 'a description of the type of asset e.g. Meter, Battery etc..',
   },
+  assetChargePowerMax: {
+    type: Number,
+    label: 'Maximum rated power input in kw',
+  },
+  assetDischargePowerMax: {
+    type: Number,
+    label: 'Maximum rated power output in kw',
+  },
+  assetRequestedPower: {
+    type: Number,
+    label: '0: Neutral, +1...n: Force Charge, -1..n: Force Discharge',
+  },
   location: {
     type: String,
     label: 'a description of where on the site the asset is located',
@@ -85,13 +97,17 @@ Assets.schema = new SimpleSchema({
     label: 'the status of this asset, forecast and historical',
     optional: true,
   },
+  'assetStatus.$.current': {
+    type: Boolean,
+    label: 'true if this is the current record',
+  },
   'assetStatus.$.available': {
     type: Boolean,
     label: 'true if asset is available for use',
   },
-  'assetStatus.$.current': {
-    type: Boolean,
-    label: 'true if this is the current record',
+  'assetStatus.$.state': {
+    type: String,
+    label: 'the state e.g. maintenance, cool-down, ready, in-event',
   },
   'assetStatus.$.periodStart': {
     type: Date,
@@ -107,14 +123,9 @@ Assets.schema = new SimpleSchema({
     type: String,
     label: 'User who made the change',
   },
-  'assetStatus.$.reason': {
-    type: String,
-    label: 'the reason for being unavailable - e.g. maintenance, cool down etc..',
-    optional: true,
-  },
   'assetStatus.$.activityId': {
     type: String,
-    label: 'any activity linked to this status or because of the reason',
+    label: 'any activity linked to this status. e.g. maintenance record',
     optional: true,
   },
 });
