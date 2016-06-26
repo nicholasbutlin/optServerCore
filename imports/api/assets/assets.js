@@ -1,8 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
-import { moment } from 'meteor/momentjs:moment';
-import { Random } from 'meteor/random';
 
 export const Assets = new Mongo.Collection('assets');
 
@@ -109,9 +107,14 @@ Assets.schema = new SimpleSchema({
     type: String,
     label: 'User who made the change',
   },
+  'assetStatus.$.reason': {
+    type: String,
+    label: 'the reason for being unavailable - e.g. maintenance, cool down etc..',
+    optional: true,
+  },
   'assetStatus.$.activityId': {
     type: String,
-    label: 'any activity linked to this status',
+    label: 'any activity linked to this status or because of the reason',
     optional: true,
   },
 });

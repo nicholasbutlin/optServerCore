@@ -80,6 +80,7 @@ export const insertAssetStatus = new ValidatedMethod({
             current: true,
             periodStart: datetime,
             userId: doc.assetStatus.userId,
+            reason: doc.assetStatus.reason,
           },
         },
       });

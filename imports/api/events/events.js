@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { moment } from 'meteor/momentjs:moment';
+import { Random } from 'meteor/random';
 
 export const Events = new Mongo.Collection('Events');
 
@@ -21,35 +23,23 @@ Events.deny({
 });
 
 Events.schema = new SimpleSchema({
-  eventId: {
-    type: String,
-    label: 'unique id of the event record',
-  },
-  blockId: {
-    type: String,
-    label: 'which block is this event acting on',
-  },
   eventType: {
     type: String,
     label: 'what type of event this is',
   },
-  eventActual: {
-    type: Boolean,
-    label: 'is this a forecast or actual historical, actual is true',
-  },
   eventCreated: {
-    type: '',
+    type: Date,
     label: 'when was this event created',
+    autovalue: () => moment().format(),
     denyUpdate: true,
   },
   eventStart: {
     type: String,
     label: 'when is the start of this event',
-    optional: true,
   },
   eventEnd: {
     type: String,
-    label: 'when is the start of this event',
+    label: 'when is the end of this event, if known',
     optional: true,
   },
   eventInstruction: {
@@ -71,34 +61,12 @@ Events.schema = new SimpleSchema({
   'eventInstruction.$.calculatedAt': {
     type: String,
     label: 'datetime the instruction was calculated',
-    denyUpdate: true,
+  },
+  blockId: {
+    type: String,
+    label: 'which block is this event acting on',
+    optional: true,
   },
 });
 
-Events.attachSchema(Events.schema);
-
-// event_instruction: {
-//   type: Array,
-//   minimum: 0,
-//   properties: {
-//     asset_id: {
-//       type: String,
-//       denyUpdate: true,
-//       description: "the unique, agreed name of the asset"
-//     },
-//     charge_rate: {
-//       type: Number,
-//       optional: true,
-//       description: "the rate set for charging, watts"
-//     },
-//     discharge_rate:{
-//       type: Number,
-//       optional: true,
-//       description: "the rate set for discharging, watts"
-//     },
-//     calculated_at: {
-//       type: String,
-//       description: "datetime the instruction was calculated",
-//       denyUpdate: true
-//     },
-//   }
+Events.attachSchema(Events.schema, { removeEmptyStrings: false });
