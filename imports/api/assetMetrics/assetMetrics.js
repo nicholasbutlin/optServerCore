@@ -37,31 +37,37 @@ AssetMetrics.schema = new SimpleSchema({
     type: Number,
     denyUpdate: true,
     optional: true,
+    decimal: true,
   },
   'metrics.voltage': {
     type: Number,
     denyUpdate: true,
     optional: true,
+    decimal: true,
   },
   'metrics.current': {
     type: Number,
     denyUpdate: true,
     optional: true,
+    decimal: true,
   },
   'metrics.temperature': {
     type: Number,
     denyUpdate: true,
     optional: true,
+    decimal: true,
   },
   'metrics.power': {
     type: Number,
     denyUpdate: true,
     optional: true,
+    decimal: true,
   },
   'metrics.energy': {
     type: Number,
     denyUpdate: true,
     optional: true,
+    decimal: true,
   },
 });
 
