@@ -12,12 +12,22 @@ JsonRoutes.add('get', '/v1/asset-status/', function (req, res, next) {
 JsonRoutes.add('get', '/v1/asset-status/:assetId', function (req, res, next) {
   const assetId = req.params.assetId;
   const asset = Assets.findOne({ assetId },
-    { fields: { assetStatus: { $elemMatch: { current: true } } } });
+    { fields:
+      { assetStatus: { $elemMatch: { current: true } },
+      assetType: 1,
+      assetRequestedPower: 1,
+      assetChargePowerMax: 1,
+      assetTotalEnergy: 1,
+    },
+  });
   const available = asset.assetStatus[0].available;
   const state = asset.assetStatus[0].state;
+  const assetType = asset.assetType;
   const requestedPower = asset.assetRequestedPower;
+  const powerMax = asset.assetChargePowerMax;
+  const totalEnergy = asset.assetTotalEnergy;
   JsonRoutes.sendResult(res, {
-    data: { asset: assetId, available, state, requestedPower },
+    data: { asset: assetId, assetType, available, state, requestedPower, powerMax, totalEnergy },
   });
 });
 

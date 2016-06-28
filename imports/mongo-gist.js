@@ -36,3 +36,13 @@ db.assets.update({
     'assetStatus.$.userId': 'asasdf',
   },
 });
+
+db.assets.update({
+  assetId: 'APC_UPS_Test',
+}, {
+  $set: {
+    requestedPower: 0,
+    assetChargePowerMax: 1000,
+    assetTotalEnergy: 111,
+  },
+});

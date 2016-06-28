@@ -19,7 +19,7 @@ Assets.deny({
   update: () => true,
   remove: () => true,
 });
-// TODO: Sites and Status not optional!!
+// TODO: Site not optional!!
 Assets.schema = new SimpleSchema({
   assetName: {
     type: String,
@@ -37,15 +37,23 @@ Assets.schema = new SimpleSchema({
   },
   assetChargePowerMax: {
     type: Number,
-    label: 'Maximum rated power input in kw',
+    label: 'Maximum rated power input in w',
+    decimal: true,
   },
   assetDischargePowerMax: {
     type: Number,
-    label: 'Maximum rated power output in kw',
+    label: 'Maximum rated power output in w',
+    decimal: true,
   },
   assetRequestedPower: {
     type: Number,
     label: '0: Neutral, +1...n: Force Charge, -1..n: Force Discharge',
+    decimal: true,
+  },
+  assetTotalEnergy: {
+    type: Number,
+    label: 'Maximum energy stored by the asset in wh',
+    decimal: true,
   },
   location: {
     type: String,
