@@ -11,5 +11,5 @@ export const AccountDetails = () => (
   </Row>
 );
 
-// TODO: Add user details
-// TODO: Admin page to manage users?
+// TODO: User: Add user details
+// TODO: User: Admin page to manage users?

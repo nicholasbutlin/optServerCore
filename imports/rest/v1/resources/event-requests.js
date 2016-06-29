@@ -37,7 +37,7 @@ JsonRoutes.add('post', '/v1/event/:assetId', function (req, res, next) {
   });
 });
 
-// TODO: Better event requests, ending and opening...
+// TODO: Events: Better event requests, ending and opening...
 // insert request for Event
 JsonRoutes.add('post', '/v1/event-requests/', function (req, res, next) {
   let data = {};

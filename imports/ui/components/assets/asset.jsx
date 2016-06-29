@@ -4,14 +4,15 @@ import { Row, Col, ListGroupItem, Button } from 'react-bootstrap';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { removeAsset } from '../../../api/assets/methods';
 
-// TODO: Go to detail view
+// TODO: Asset: Go to detail view of asset
+// TODO: Asset: availability override from console: technical availability, programme availability
 const handleViewDetails = (assetId, event) => {
   event.preventDefault();
 };
 
 const handleRemoveAsset = (assetId, event) => {
   event.preventDefault();
-  // TODO: this should be replaced with a styled solution
+  // TODO: Style: this should be replaced with a styled solution
   // disable the eslint `no-alert`
   // eslint-disable-next-line no-alert
   if (confirm('Are you sure? This is permanent.')) {

@@ -19,7 +19,7 @@ Assets.deny({
   update: () => true,
   remove: () => true,
 });
-// TODO: Site not optional!!
+// TODO: Asset: relatiopnship with site and how to use . manage
 Assets.schema = new SimpleSchema({
   assetName: {
     type: String,
@@ -35,29 +35,33 @@ Assets.schema = new SimpleSchema({
     type: String,
     label: 'a description of the type of asset e.g. Meter, Battery etc..',
   },
+  location: {
+    type: String,
+    label: 'a description of where on the site the asset is located',
+  },
   assetChargePowerMax: {
     type: Number,
     label: 'Maximum rated power input in w',
+    defaultValue: 0,
     decimal: true,
   },
   assetDischargePowerMax: {
     type: Number,
     label: 'Maximum rated power output in w',
+    defaultValue: 0,
     decimal: true,
   },
   assetRequestedPower: {
     type: Number,
     label: '0: Neutral, +1...n: Force Charge, -1..n: Force Discharge',
+    defaultValue: 0,
     decimal: true,
   },
   assetTotalEnergy: {
     type: Number,
     label: 'Maximum energy stored by the asset in wh',
+    defaultValue: 0,
     decimal: true,
-  },
-  location: {
-    type: String,
-    label: 'a description of where on the site the asset is located',
   },
   siteId: {
     type: String,

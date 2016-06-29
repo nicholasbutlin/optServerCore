@@ -20,8 +20,8 @@ EventRequests.deny({
   remove: () => true,
 });
 
-// TODO: Scheduled events vs. instantaneous events
-// TODO: How does an event trequest trigger an event?
+// TODO: Events: Scheduled events vs. instantaneous events
+// TODO: Events: How does an event trequest trigger an event?
 
 EventRequests.schema = new SimpleSchema({
   eventRequestCreated: {

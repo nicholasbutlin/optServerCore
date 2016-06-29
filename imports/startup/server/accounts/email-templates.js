@@ -1,6 +1,6 @@
 import { Accounts } from 'meteor/accounts-base';
 
-// TODO: put these in settings file
+// TODO: Settings: put email detials in settings file
 const name = 'AppV';
 const supportEmail = 'admin@viriyaenergy.com';
 const from = `${name} ${supportEmail}`;
@@ -44,4 +44,4 @@ emailTemplates.verifyEmail = {
 };
 
 
-// TODO: HTML emails
+// TODO: Style :HTML emails

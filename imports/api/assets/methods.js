@@ -2,6 +2,7 @@ import { Assets } from './assets';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { moment } from 'meteor/momentjs:moment';
+import { Meteor } from 'meteor/meteor';
 
 // UI Methods
 export const insertAsset = new ValidatedMethod({
@@ -13,6 +14,15 @@ export const insertAsset = new ValidatedMethod({
     location: { type: String },
   }).validator(),
   run(doc) {
+    doc.assetStatus = [
+      {
+        available: false,
+        current: true,
+        state: 'commissioning',
+        periodStart: moment().format(),
+        userId: Meteor.userId(),
+      },
+    ];
     doc.userId = Meteor.userId();
     Assets.insert(doc);
   },

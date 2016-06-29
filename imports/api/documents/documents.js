@@ -4,7 +4,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 export const Documents = new Mongo.Collection('documents');
 
-// TODO: Implement search as per: https://themeteorchef.com/snippets/simple-search/
+// TODO: Function: Implement search as per: https://themeteorchef.com/snippets/simple-search/
 if (Meteor.isServer) {
   Documents._ensureIndex({ title: 1 });
 }

@@ -26,7 +26,7 @@ export const initApiKey = new ValidatedMethod({
 });
 
 
-// TODO: Regenerate API Key?
+// TODO: Api Key: Regenerate API Key?
 // export const regenerateApiKey = new ValidatedMethod({
 //   name: 'regenApi',
 //   validate(userId) {
