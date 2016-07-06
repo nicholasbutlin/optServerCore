@@ -32,7 +32,10 @@ export const Asset = ({ asset }) => (
   <ListGroupItem key={ asset._id }>
     <Row>
       <Col xs={ 4 } md={ 2 }>
-        <Link to="assets" params={{ id: asset._id }}>
+        {/* <Link to='assets' params={{ id: asset._id }}>
+          { asset.assetName }
+        </Link>*/}
+        <Link to={ `/assets/${asset.assetId}` }>
           { asset.assetName }
         </Link>
       </Col>

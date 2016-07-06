@@ -12,7 +12,6 @@ import { ResetPassword } from '../../ui/pages/accounts/reset-password';
 import { Signup } from '../../ui/pages/accounts/signup';
 import { VerifyEmail } from '../../ui/pages/accounts/verify-email';
 
-// import { Documents } from '../../ui/pages/documents';
 import { Assets } from '../../ui/pages/assets';
 import { AssetsDetails } from '../../ui/pages/assets-details';
 import { AccountDetails } from '../../ui/pages/accountDetails';
@@ -35,10 +34,8 @@ Meteor.startup(() => {
     <Router history={ browserHistory }>
       <Route path="/" component={ App }>
         <IndexRoute name="index" component={ Index } onEnter={ requireAuth } />
-        {/* <Route name="documents" path="/documents" component={ Documents }
-        onEnter={ requireAuth } />*/}
         <Route name="assets" path="/assets" component={ Assets } onEnter={ requireAuth } />
-        <Route name="assets-details" path="/assets/:id" component={ AssetsDetails } onEnter={ requireAuth } />
+        <Route path="/assets/:assetId" component={ AssetsDetails } onEnter={ requireAuth } />
         <Route name="account" path="/account" component={ AccountDetails }
           onEnter={ requireAuth } />
         <Route name="login" path="/login" component={ Login } />

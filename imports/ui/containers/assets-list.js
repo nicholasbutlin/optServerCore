@@ -4,7 +4,7 @@ import { AssetsList } from '../components/assets/assets-list';
 import { Loading } from '../components/loading';
 import { Meteor } from 'meteor/meteor';
 
-const composer = (params, onData) => {
+const composer = (props, onData) => {
   const subscription = Meteor.subscribe('assets');
   if (subscription.ready()) {
     const assets = Assets.find().fetch();

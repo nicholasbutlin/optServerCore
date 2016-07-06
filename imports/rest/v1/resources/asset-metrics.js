@@ -18,6 +18,9 @@ JsonRoutes.add('get', '/v1/asset-metrics/:assetId', function (req, res, next) {
 JsonRoutes.add('post', '/v1/asset-metrics/', function (req, res, next) {
   let data = {};
   if (req.userId) {
+    // TODO: If on battery, gridPower = 0, else = power
+    // TODO: availableEnergy = SoC * Capacity, unless not available = 0
+    // req.body.gridPower = 0
     insertAssetMetric.call(req.body, function (err, res) {
       if (err) {
         data = { err };

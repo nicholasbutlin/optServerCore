@@ -66,6 +66,20 @@ AssetMetrics.schema = new SimpleSchema({
   'metrics.energy': {
     type: Number,
     denyUpdate: true,
+    label: 'any energy readings in kwh',
+    optional: true,
+    decimal: true,
+  },
+  'metrics.gridPower': {
+    type: Number,
+    label: 'power drawn from the grid, vs. e.g. battery',
+    optional: true,
+    decimal: true,
+  },
+  'metrics.availableEnergy': {
+    type: Number,
+    denyUpdate: true,
+    label: 'the energy remaining for use',
     optional: true,
     decimal: true,
   },

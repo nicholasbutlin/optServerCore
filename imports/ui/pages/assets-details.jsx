@@ -1,15 +1,12 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-// import AssetsList from '../containers/assets-list';
-// import { AddAsset } from '../components/assets/add-asset';
+import AssetDetail from '../containers/assets-details';
 
-export const Assets = () => (
+export const AssetsDetails = () => (
   <Row>
     <Col xs={ 12 }>
       <h4 className="page-header">Asset Details</h4>
-      {this.props.params.id}
-      {/* <AddAsset />
-      <AssetsList />*/}
+      <AssetDetail />
     </Col>
   </Row>
 );

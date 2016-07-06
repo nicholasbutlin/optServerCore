@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { APIKeys } from '../../api/apiKeys/apiKeys';
 import { ApiKey } from '../components/apiKey';
 
-const composer = (params, onData) => {
+const composer = (props, onData) => {
   const subscription = Meteor.subscribe('APIKey');
   if (subscription.ready()) {
     const apiKey = APIKeys.findOne();
