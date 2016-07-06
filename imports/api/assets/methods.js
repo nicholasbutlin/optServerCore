@@ -32,10 +32,13 @@ export const updateAsset = new ValidatedMethod({
   name: 'assets.ui.update',
   validate: new SimpleSchema({
     _id: { type: String },
-    'update.assetName': { type: String, optional: true },
-    'update.assetId': { type: String, optional: true },
     'update.assetType': { type: String, optional: true },
+    'update.assetName': { type: String, optional: true },
+    'update.siteId': { type: String, optional: true },
     'update.location': { type: String, optional: true },
+    'update.assetTotalEnergy': { type: String, optional: true },
+    'update.assetDischargePowerMax': { type: String, optional: true },
+    'update.assetChargePowerMax': { type: String, optional: true },
   }).validator(),
   run({ _id, update }) {
     Assets.update(_id, { $set: update });

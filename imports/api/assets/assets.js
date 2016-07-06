@@ -23,7 +23,6 @@ Assets.deny({
 Assets.schema = new SimpleSchema({
   assetName: {
     type: String,
-    denyUpdate: true,
     label: 'the unique human readable id of the Asset',
   },
   assetId: {
