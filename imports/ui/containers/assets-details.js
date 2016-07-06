@@ -6,8 +6,7 @@ import { Loading } from '../components/loading';
 import { Meteor } from 'meteor/meteor';
 
 const composer = (props, onData) => {
-  //  TODO: why nn parse URL??
-  const assetId = 'APC_UPS_Test';
+  const assetId = props.assetId;
 
   const subscription = (Meteor.subscribe('assets') && Meteor.subscribe('assetMetricsId', assetId));
 
