@@ -1,0 +1,862 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>api.viriya.com</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/darkula.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+    body {
+      position: relative;
+    }
+
+    h1 {
+      margin-top: 5px;
+    }
+
+    h1, h2, h3, h4 {
+      color: #2b2b2b;
+    }
+
+    h2:after {
+      content: ' ';
+    }
+
+    h5 {
+      font-weight: bold;
+    }
+
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+      display: none;
+      position: absolute;
+      margin-left: 8px;
+    }
+
+    h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
+      color: #a5a5a5;
+      display: initial;
+    }
+
+    .nav.nav-tabs > li > a {
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+
+    .tab-content {
+      padding-top: 8px;
+    }
+
+    .table {
+      margin-bottom: 8px;
+    }
+
+    pre {
+      border-radius: 0px;
+      border: none;
+    }
+
+    pre code {
+      margin: -9.5px;
+    }
+
+    .request {
+      margin-top: 12px;
+      margin-bottom: 24px;
+    }
+
+    .response-text-sample {
+      padding: 0px !important;
+    }
+
+    .response-text-sample pre {
+      margin-bottom: 0px;
+    }
+
+
+    #sidebar-wrapper {
+      z-index: 1000;
+      position: fixed;
+      left: 250px;
+      width: 250px;
+      height: 100%;
+      margin-left: -250px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: #2b2b2b;
+      padding-top: 20px;
+    }
+
+    #sidebar-wrapper ul {
+      width: 250px;
+    }
+
+    #sidebar-wrapper ul li {
+      margin-right: 10px;
+    }
+
+    #sidebar-wrapper ul li a:hover {
+      background: inherit;
+      text-decoration: none;
+    }
+
+    #sidebar-wrapper ul li a {
+      display: block;
+      color: #ECF0F1;
+      padding: 6px 15px;
+    }
+
+    #sidebar-wrapper ul li ul {
+      padding-left: 25px;
+    }
+
+    #sidebar-wrapper ul li ul li a {
+      padding: 1px 0px;
+    }
+
+    #sidebar-wrapper ul li a:hover,
+    #sidebar-wrapper ul li a:focus {
+      color: #e0c46c;
+      border-right: solid 1px #e0c46c;
+    }
+
+    #sidebar-wrapper ul li.active > a {
+      color: #e0c46c;
+      border-right: solid 3px #e0c46c;
+    }
+
+    #sidebar-wrapper ul li:not(.active) ul {
+      display: none;
+    }
+
+    #page-content-wrapper {
+      width: 100%;
+      position: absolute;
+      padding: 15px 15px 15px 250px;
+    }
+</style>
+</head>
+
+<body data-spy="scroll" data-target=".scrollspy">
+<div id="sidebar-wrapper">
+    <div class="scrollspy">
+    <ul id="main-menu" data-spy="affix" class="nav">
+        <li>
+            <a href="#doc-general-notes">General notes</a>
+        </li>
+        <li>
+            <a href="#folder-data-retrieval">Data Retrieval </a>
+            <ul>
+                <li>
+                    <a href="#request-get-asset-status">Get Asset  status</a>
+                </li>
+                <li>
+                    <a href="#request-get-asset-metrics">Get Asset  metrics</a>
+                </li>
+                <li>
+                    <a href="#request-get-asset-event">Get Asset  event </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#folder-data-updates">Data Updates</a>
+            <ul>
+                <li>
+                    <a href="#request-insert-asset-status">Insert asset-status</a>
+                </li>
+                <li>
+                    <a href="#request-insert-asset-metric">Insert asset-metric</a>
+                </li>
+                <li>
+                    <a href="#request-insert-event-request">Insert event request</a>
+                </li>
+                <li>
+                    <a href="#request-insert-asset-event">Insert asset event </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+</div>
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>api.viriya.com v1</h1>
+
+                <h2 id="doc-general-notes">
+                    General notes
+                    <a href="#doc-general-notes"><i class="glyphicon glyphicon-link"></i></a>
+                </h2>
+                <p>This document outlines the public API for the viriya cloud as it is currently implemented </p>
+                <p>The API is versioned but unless there is a potential break or backward incompatibility the version will remain the same. e.g. additional resources will not change the version, but removal or substantial change to an existing resource will.
+          </p>
+                <div class="endpoints-group">
+                    <h3 id="folder-data-retrieval">
+                        Data Retrieval
+                        <a href="#folder-data-retrieval"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>A collection of APIs that allow retrieval of data from an Asset</p>
+</div>
+                  <div class="request">
+                    <h4 id="request-get-asset-status">
+                        Get Asset  status
+                        <a href="#request-get-asset-status"><i class="glyphicon glyphicon-link"></i></a>
+                    </h4>
+                    <div>
+                      <p>Get the current status of the Asset</p>
+                    </div>
+                      <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-get-asset-status-example-http" data-toggle="tab"> HTTP Request</a></li>
+                        </ul>
+                                <div class="tab-content">
+
+                      <div class="tab-pane active" id="request-get-asset-status-example-http">
+                          <pre><code class="hljs http">
+GET api.viriyaenergy.com/v1/asset-status/yourAssetIdHere HTTP/1.1
+Host: api.viriyaenergy.com
+
+Headers
+apikey: yourApiKeyHere
+
+</code></pre>
+                                    </div>
+                                </div>
+                      </div>
+
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active">
+                                        <a href="#request-get-asset-status-responses-1ec3727d-1ca9-ae55-8e15-7e9ff9921bc0" data-toggle="tab">
+
+                                                Example Response
+
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-get-asset-status-responses-1ec3727d-1ca9-ae55-8e15-7e9ff9921bc0">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>Content-Type, Authorization, X-Requested-With</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, OPTIONS</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Encoding</th><td>gzip</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+
+
+
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>
+{
+    "asset": "yourAssetIdHere",
+    "assetType": "UPS",
+    "available": false,
+    "state": "insufficient-load",
+    "requestedPower": 0,
+    "powerMax": 1000,
+    "totalEnergy": 111
+}
+
+</code></pre>
+                                                </td></tr>
+
+
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <hr>
+                        </div>
+
+
+
+
+
+                        <div class="request">
+
+                            <h4 id="request-get-asset-metrics">
+                                Get Asset  metrics
+                                <a href="#request-get-asset-metrics"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div><p>Get the most recent metric stored against the Asset</p>
+</div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active"><a href="#request-get-asset-metrics-example-http" data-toggle="tab"> HTTP Request</a></li>
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-get-asset-metrics-example-http">
+                                        <pre><code class="hljs http">
+GET api.viriyaenergy.com/v1/asset-metrics/yourAssetIdHere HTTP/1.1
+Host: api.viriyaenergy.com
+
+Headers
+apikey: yourApiKeyHere
+
+</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active">
+                                        <a href="#request-get-asset-metrics-responses-f9e796da-5f69-ba8c-1b77-ca6e138e2865" data-toggle="tab">
+
+                                                Example Response
+
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-get-asset-metrics-responses-f9e796da-5f69-ba8c-1b77-ca6e138e2865">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>Content-Type, Authorization, X-Requested-With</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, OPTIONS</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Encoding</th><td>gzip</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>
+{
+    "assetId": "yourAssetIdHere",
+    "measurementDatetime": "2016-07-26T08:42:03.291-00:00",
+    "metrics": {
+        "temperature": 28.3,
+        "power": 0,
+        "energy": 0,
+        "current": 0,
+        "stateOfCharge": 100,
+        "voltage": 247.5
+    }
+}
+
+</code></pre>
+                                                </td></tr>
+
+
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <hr>
+                        </div>
+
+
+
+
+
+                        <div class="request">
+
+                            <h4 id="request-get-asset-event">
+                                Get Asset  event
+                                <a href="#request-get-asset-event"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div><p>Get the current Event State of the Asset</p>
+</div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active"><a href="#request-get-asset-event-example-http" data-toggle="tab"> HTTP Request</a></li>
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-get-asset-event-example-http">
+                                        <pre><code class="hljs http">
+GET api.viriyaenergy.com/v1/event/yourAssetIdHere HTTP/1.1
+Host: api.viriyaenergy.com
+
+Headers
+apikey: yourApiKeyHere
+
+</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active">
+                                        <a href="#request-get-asset-event-responses-d4626d23-967f-5e85-87fb-f5049697eae5" data-toggle="tab">
+
+                                                Example Response
+
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-get-asset-event-responses-d4626d23-967f-5e85-87fb-f5049697eae5">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>Content-Type, Authorization, X-Requested-With</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, OPTIONS</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Encoding</th><td>gzip</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+
+
+
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>
+{
+    "assetChargePowerMax": 1000,
+    "assetDischargePowerMax": 0,
+    "assetRequestedPower": 0
+}
+
+</code></pre>
+                                                </td></tr>
+
+
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <hr>
+                        </div>
+</div>
+                <div class="endpoints-group">
+                    <h3 id="folder-data-updates">
+                        Data Updates
+                        <a href="#folder-data-updates"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>A collection of APIs that allow updates to various aspects of the Cloud</p>
+</div>
+
+
+
+
+                        <div class="request">
+
+                            <h4 id="request-insert-asset-status">
+                                Insert asset-status
+                                <a href="#request-insert-asset-status"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div><p>Insert the status of the asset into the record</p>
+</div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active"><a href="#request-insert-asset-status-example-http" data-toggle="tab"> HTTP Request</a></li>
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-insert-asset-status-example-http">
+                                        <pre><code class="hljs http">
+POST api.viriyaenergy.com/v1/asset-status/ HTTP/1.1
+Host: api.viriyaenergy.com
+
+
+Headers
+apikey: yourApiKeyHere
+Content-Type: application/json
+
+Request Body
+{
+  "assetId": "yourAssetIdHere",
+  "assetStatus": {
+    "available": true,
+    "state": "ready"
+  }
+}
+
+</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active">
+                                        <a href="#request-insert-asset-status-responses-54477771-842f-f340-62bf-17918a1ec7bc" data-toggle="tab">
+
+                                                Example Response
+
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-insert-asset-status-responses-54477771-842f-f340-62bf-17918a1ec7bc">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>Content-Type, Authorization, X-Requested-With</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, OPTIONS</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Encoding</th><td>gzip</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+
+
+
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>
+{
+    "res": {
+        "status": "updated"
+    }
+}
+
+</code></pre>
+                                                </td></tr>
+
+
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <hr>
+                        </div>
+
+
+
+
+
+                        <div class="request">
+
+                            <h4 id="request-insert-asset-metric">
+                                Insert asset-metric
+                                <a href="#request-insert-asset-metric"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div><p>Insert the latest metric into the record</p>
+</div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active"><a href="#request-insert-asset-metric-example-http" data-toggle="tab"> HTTP Request</a></li>
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-insert-asset-metric-example-http">
+                                        <pre><code class="hljs http">
+POST api.viriyaenergy.com/v1/asset-metrics HTTP/1.1
+Host: api.viriyaenergy.com
+
+Headers
+apikey: yourApiKeyHere
+Content-Type: application/json
+
+Request Body
+{
+ "assetId": "yourAssetIdHere",
+ "measurementDatetime": "2016-07-21T12:48:06+00:00",
+ "metrics": {
+    "stateOfCharge": 100.0,
+    "voltage": 246.1,
+    "current": 0.3,
+    "temperature": 27.0,
+    "power":73.83,
+    "energy":0.0
+    }
+}
+
+</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active">
+                                        <a href="#request-insert-asset-metric-responses-b653d322-8534-56e7-0fb0-254de2e1ff1e" data-toggle="tab">
+
+                                                Example Response
+
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-insert-asset-metric-responses-b653d322-8534-56e7-0fb0-254de2e1ff1e">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>Content-Type, Authorization, X-Requested-With</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, OPTIONS</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Encoding</th><td>gzip</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+
+
+
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>
+{
+    "res": "s9BxE2aHswzWfuJSBe"
+}
+
+</code></pre>
+                                                </td></tr>
+
+
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <hr>
+                        </div>
+
+
+
+
+
+                        <div class="request">
+
+                            <h4 id="request-insert-event-request">
+                                Insert event request
+                                <a href="#request-insert-event-request"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div><p>Creat an event request for the asset or asset block</p>
+</div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active"><a href="#request-insert-event-request-example-http" data-toggle="tab"> HTTP Request</a></li>
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-insert-event-request-example-http">
+                                        <pre><code class="hljs http">
+POST api.viriyaenergy.com/v1/event-requests HTTP/1.1
+Host: api.viriyaenergy.com
+
+Headers
+apikey: yourApiKeyHere
+Content-Type: application/json
+
+Request Body
+{
+    "eventType": "UPSIDE",
+    "eventStart": "2016-05-10T01:40:00+00:00",
+    "eventInstructions": [
+        {
+            "assetId": "yourAssetIdHere",
+            "chargeRate":0
+        }
+    ]
+}
+
+</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active">
+                                        <a href="#request-insert-event-request-responses-b75841a4-cf1c-f3b7-1f89-5497d8df8564" data-toggle="tab">
+
+                                                Example Response
+
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-insert-event-request-responses-b75841a4-cf1c-f3b7-1f89-5497d8df8564">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>Content-Type, Authorization, X-Requested-With</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, OPTIONS</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Encoding</th><td>gzip</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+
+
+
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>
+{
+    "res": "D5MmJHThQzScHWeqd"
+}
+
+</code></pre>
+                                                </td></tr>
+
+
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <hr>
+                        </div>
+
+
+
+
+
+                        <div class="request">
+
+                            <h4 id="request-insert-asset-event">
+                                Insert asset event
+                                <a href="#request-insert-asset-event"><i class="glyphicon glyphicon-link"></i></a>
+                            </h4>
+
+                            <div><p>Immediately initiate and event - this API will be deprecated in favour of Event Request</p>
+</div>
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active"><a href="#request-insert-asset-event-example-http" data-toggle="tab"> HTTP Request</a></li>
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-insert-asset-event-example-http">
+                                        <pre><code class="hljs http">
+POST api.viriyaenergy.com/v1/event/yourAssetIdHere HTTP/1.1
+Host: api.viriyaenergy.com
+
+Headers
+apikey: yourApiKeyHere
+Content-Type: application/json
+
+Request Body
+
+{
+    "assetId": "yourAssetIdHere",
+    "assetRequestedPower": 0
+}
+
+</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+
+                                    <li role="presentation" class="active">
+                                        <a href="#request-insert-asset-event-responses-35802e39-9478-c253-8f8b-900aa4ca7701" data-toggle="tab">
+
+                                                Example Response
+
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="request-insert-asset-event-responses-35802e39-9478-c253-8f8b-900aa4ca7701">
+                                        <table class="table table-bordered">
+                                            <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Headers</th><td>Content-Type, Authorization, X-Requested-With</td></tr>
+
+                                            <tr><th style="width: 20%;">Access-Control-Allow-Methods</th><td>GET, POST, OPTIONS</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Encoding</th><td>gzip</td></tr>
+
+                                            <tr><th style="width: 20%;">Content-Type</th><td>application/json</td></tr>
+
+
+
+                                                <tr><td class="response-text-sample" colspan="2">
+                                                    <pre><code>
+{
+    "res": 0
+}
+
+</code></pre>
+                                                </td></tr>
+
+
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <hr>
+                        </div>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>

@@ -44,51 +44,60 @@ const handleUpdateAsset = (assetId, event) => {
   }
 };
 
+const eventState = (assetDetail) => {
+  let eventStateText = 'No Data';
+  if (assetDetail.assetRequestedPower === 0) {
+    eventStateText = 'Neutral';
+  } else if (assetDetail.assetRequestedPower === 1) {
+    eventStateText = 'Charge';
+  } else {
+    eventStateText = 'Discharge';
+  }
+  return eventStateText;
+};
+
 export const AssetDetail = ({ assetDetail, assetMetric }) => (
     <div>
       <Row>
         <Col xs={ 4 } md={ 2 }>
-          <FormGroup controlId="assetId">
-            <ControlLabel>Asset ID</ControlLabel>
-            <FormControl
-              type="text"
-              readOnly
-              standalone
-              id='assetId'
-              defaultValue={ assetDetail.assetId }
-            />
-          </FormGroup>
+          ID: { assetDetail.assetId }
         </Col>
-        <Col xs={ 6 } md={ 4 }>
-          <FormGroup controlId="metric">
-            <ControlLabel>Latest Metric</ControlLabel>
-            <FormControl
-              type="text"
-              readOnly
-              standalone
-              defaultValue={ assetMetric ?
-                moment(assetMetric.measurementDatetime).format('MMMM Do YYYY, h:mm:ss a') :
-              'No Data' }
-            />
-          </FormGroup>
+        <Col xs={ 6 } md={ 2 }>
+
         </Col>
         <Col xs={ 4 } md={ 2 }>
-          <FormGroup controlId="assetRequestedPower">
-            <ControlLabel>Event State</ControlLabel>
-            <FormControl
-              type="text"
-              readOnly
-              standalone
-              id='assetRequestedPower'
-              defaultValue={
-                assetDetail.assetRequestedPower == 0 ?
-                'Neutral' :
-                assetDetail.assetRequestedPower == 1 ?
-                'Charge' : 'Discharge'
-              }
-              onKeyUp={ handleUpdateAsset.bind(this, assetDetail._id) }
-            />
-          </FormGroup>
+
+        </Col>
+        <Col xs={ 4 } md={ 2 }>
+          Power (W): { assetMetric ?
+            assetMetric.metrics.power :
+          'No Data' }
+        </Col>
+      </Row>
+      <Row>
+        <br/>
+      </Row>
+      <Row>
+        <Col xs={ 4 } md={ 2 }>
+          { assetMetric ?
+            moment(assetMetric.measurementDatetime).format('MMM Do YY:  HH:mm:ss') :
+          'No Data' }
+        </Col>
+        <Col xs={ 6 } md={ 2 }>
+
+        </Col>
+        <Col xs={ 4 } md={ 2 }>
+
+        </Col>
+        <Col xs={ 4 } md={ 2 }>
+          Event State: {eventState(assetDetail)}
+        </Col>
+      </Row>
+      <Row>
+        <br/>
+        <Col xs={ 12 } md={ 12 }>
+          <br/>
+          <p><strong>Update Asset Details. Note: Asset Id cannot be updated. </strong></p>
         </Col>
       </Row>
       <Row>

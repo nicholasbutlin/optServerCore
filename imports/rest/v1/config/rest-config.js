@@ -4,11 +4,10 @@ import { APIKeys } from '../../../api/apiKeys/apiKeys';
 import 'meteor/simple:rest-json-error-handler';
 
 JsonRoutes.setResponseHeaders({
-  'Cache-Control': 'no-store',
-  Pragma: 'no-cache',
-  'Access-Control-Allow-Origin': '*',
+  // 'Cache-Control': 'no-store',
+  // 'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+  // 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
 });
 
 JsonRoutes.ErrorMiddleware.use(RestMiddleware.handleErrorAsJson);
